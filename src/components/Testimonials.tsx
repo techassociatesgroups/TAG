@@ -7,30 +7,30 @@ import GlassCard from "@/components/GlassCard";
 const testimonials = [
   {
     id: 1,
-    name: "John Smith",
-    company: "TechStart Solutions",
+    name: "sajith ram",
+    company: "deffo tech",
     role: "CEO",
-    testimonial: "Exceptional work! They transformed our website and increased conversions by 150%. Highly recommend their services!",
+    testimonial: "The team delivered a high-quality product that exceeded our expectations. Truly professional service.",
     rating: 5,
-    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=John"
+    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=sajith"
   },
   {
     id: 2,
-    name: "Sarah Johnson",
-    company: "Digital Ventures",
-    role: "Marketing Director",
-    testimonial: "The team's expertise in UI/UX design was evident from day one. Our users love the new interface!",
+    name: "Sunil",
+    company: "sunil associates",
+    role: "Owner",
+    testimonial: "Best services support I have ever experienced. The team is always there to help.",
     rating: 5,
-    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah"
+    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sunil"
   },
   {
     id: 3,
-    name: "Michael Chen",
-    company: "E-Commerce Plus",
-    role: "Founder",
-    testimonial: "Outstanding digital marketing strategies. Our sales increased significantly within 3 months!",
+    name: "karthiga",
+    company: "srisai academy",
+    role: "Director",
+    testimonial: "Incredibly quick website designs without compromising on quality. Very impressed with the turnaround time.",
     rating: 5,
-    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Michael"
+    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=karthiga"
   },
   {
     id: 4,

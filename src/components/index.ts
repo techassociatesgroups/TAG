@@ -20,7 +20,4 @@ export { Pricing } from "./Pricing";
 export { AnimatedMist } from "./AnimatedMist";
 export { Testimonials } from "./Testimonials";
 export { Nav } from "./Nav";
-
-// ⬇️ NEW — correct export for scroll stack section
-export { default as ScrollStackProjects } from "./ProjectShowcase";
-
+export { default as DecryptedText } from "./DecryptedText";

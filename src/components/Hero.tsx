@@ -86,10 +86,6 @@ const Hero = () => {
           >
             Get Started Now
           </motion.button>
-
-          <button className="px-8 py-4 bg-white/10 border border-white/20 text-white font-semibold rounded-2xl hover:bg-white/20 transition">
-            See Projects
-          </button>
         </motion.div>
       </motion.div>
 

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { PhoneCall } from 'lucide-react';
 
 export function FloatingWhatsApp() {
-  const href = 'https://wa.me/919999999999';
+  const href = 'https://wa.me/+916374846995';
 
   return (
     <a

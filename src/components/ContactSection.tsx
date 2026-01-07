@@ -1,25 +1,44 @@
 'use client';
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import { Mail, Phone } from 'lucide-react';
 
 export function ContactSection() {
-  const [form, setForm] = useState({ name: '', phone: '', service: 'Website Development' });
+  const [form, setForm] = useState({ name: '', email: '', phone: '', service: 'Website Development' });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Contact form submitted', form);
-    setSubmitted(true);
-    setTimeout(() => {
-      setForm({ name: '', phone: '', service: 'Website Development' });
-      setSubmitted(false);
-    }, 3000);
+    setIsSubmitting(true);
+
+    try {
+      // Send to our internal API route to keep the Form ID secure
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        setForm({ name: '', email: '', phone: '', service: 'Website Development' });
+        setTimeout(() => setSubmitted(false), 3000);
+      } else {
+        alert("There was a problem sending your message. Please try again.");
+      }
+    } catch (error) {
+      alert("Error sending message. Please check your connection.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -52,8 +71,8 @@ export function ContactSection() {
               </div>
               <div>
                 <h3 className="text-white font-semibold mb-2">Email</h3>
-                <a href="mailto:hello@techassociatesgroups@gmail.com" className="text-white/70 hover:text-white transition">
-                  techassociatesgroups@gmail.com
+                <a href="mailto:info@associatesgroups.in" className="text-white/70 hover:text-white transition">
+                  info@associatesgroups.in
                 </a>
               </div>
             </div>
@@ -64,8 +83,8 @@ export function ContactSection() {
               </div>
               <div>
                 <h3 className="text-white font-semibold mb-2">WhatsApp</h3>
-                <a href="https://wa.me/919999999999" className="text-white/70 hover:text-white transition">
-                  +91 99999 99999
+                <a href="https://wa.me/916374846995" className="text-white/70 hover:text-white transition">
+                  +91 63748 46995 
                 </a>
                 <p className="text-white/50 text-sm mt-2">We respond within 2 hours</p>
               </div>
@@ -91,7 +110,18 @@ export function ContactSection() {
               onChange={handleChange}
               placeholder="Your Name"
               required
-              className="w-full p-4 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-purple-400 focus:bg-white/15 transition"
+              disabled={isSubmitting}
+              className="w-full p-4 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-purple-400 focus:bg-white/15 transition disabled:opacity-50 disabled:cursor-not-allowed"
+            />
+            <input
+              name="email"
+              type="email"
+              value={form.email}
+              onChange={handleChange}
+              placeholder="Email Address"
+              required
+              disabled={isSubmitting}
+              className="w-full p-4 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-purple-400 focus:bg-white/15 transition disabled:opacity-50 disabled:cursor-not-allowed"
             />
             <input
               name="phone"
@@ -99,28 +129,31 @@ export function ContactSection() {
               onChange={handleChange}
               placeholder="Phone Number"
               required
-              className="w-full p-4 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-purple-400 focus:bg-white/15 transition"
+              disabled={isSubmitting}
+              className="w-full p-4 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-purple-400 focus:bg-white/15 transition disabled:opacity-50 disabled:cursor-not-allowed"
             />
             <select
               name="service"
               value={form.service}
               onChange={handleChange}
-              className="w-full p-4 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:border-purple-400 focus:bg-white/15 transition"
+              disabled={isSubmitting}
+              className="w-full p-4 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:border-purple-400 focus:bg-white/15 transition disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <option value="Website Development">Website Development</option>
-              <option value="UI/UX Design">UI/UX Design</option>
-              <option value="Digital Marketing">Digital Marketing & SEO</option>
-              <option value="Brand Identity">Brand Identity</option>
-              <option value="E-Commerce">E-Commerce Solutions</option>
+              <option value="Website Development" className="text-black">Website Development</option>
+              <option value="UI/UX Design" className="text-black">UI/UX Design</option>
+              <option value="Digital Marketing" className="text-black">Digital Marketing & SEO</option>
+              <option value="Brand Identity" className="text-black">Brand Identity</option>
+              <option value="E-Commerce" className="text-black">E-Commerce Solutions</option>
             </select>
 
             <motion.button
+              disabled={isSubmitting}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               type="submit"
-              className="w-full py-4 bg-gradient-to-r from-purple-500 to-blue-500 text-white font-semibold rounded-lg hover:from-purple-600 hover:to-blue-600 transition-all duration-300 flex items-center justify-center gap-2"
+              className="w-full py-4 bg-gradient-to-r from-purple-500 to-blue-500 text-white font-semibold rounded-lg hover:from-purple-600 hover:to-blue-600 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
             >
-              {submitted ? '✓ Message Sent!' : 'Send Message'}
+              {submitted ? '✓ Message Sent!' : isSubmitting ? 'Sending...' : 'Send Message'}
             </motion.button>
           </motion.form>
         </div>

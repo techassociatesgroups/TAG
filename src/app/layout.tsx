@@ -4,7 +4,7 @@ import { CustomCursor } from '@/components/CustomCursor';
 import '@/globals.css';
 
 export const metadata: Metadata = {
-  title: 'Premium Digital Studio',
+  title: 'Tech Associates Groups - Design & Development Studio',
   description: 'Crafting exceptional digital experiences with Next.js, Tailwind CSS, and Framer Motion.',
   keywords: ['design', 'development', 'web', 'studio', 'nextjs'],
 };

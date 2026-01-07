@@ -20,11 +20,9 @@ const pricingTiers = [
 
 'lifetime 24/7 free hosting support',
 
-'unlimited images and videos upload',
+'limited images and videos upload',
 
-'1 free mail id',
-
-'seo friendly website',
+'1 free business mail id',
   '100% responsive website',
 
   'social media integration',
@@ -95,7 +93,7 @@ const pricingTiers = [
 
 'unlimited images and videos upload',
 
-'1 free mail id',
+'more than 2 business mail id with unlimited subdomains',
 
 'seo friendly website',
   '100% responsive website',
