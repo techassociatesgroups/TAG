@@ -1,13 +1,7 @@
-import type { Metadata } from 'next';
-import { SmoothScroll } from '@/components/SmoothScroll';
-import { CustomCursor } from '@/components/CustomCursor';
-import '@/globals.css';
+'use client';
 
-export const metadata: Metadata = {
-  title: 'Tech Associates Groups - Design & Development Studio',
-  description: 'Crafting exceptional digital experiences with Next.js, Tailwind CSS, and Framer Motion.',
-  keywords: ['design', 'development', 'web', 'studio', 'nextjs'],
-};
+import { SmoothScroll } from '@/components/SmoothScroll';
+import '@/globals.css';
 
 export default function RootLayout({
   children,
@@ -18,7 +12,6 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className="bg-[#0a0a0a] text-[#ededed]">
         <SmoothScroll>
-          <CustomCursor />
           {children}
         </SmoothScroll>
       </body>

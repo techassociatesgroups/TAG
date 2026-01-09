@@ -1,14 +1,10 @@
 import Hero from '@/components/Hero';
-import { Footer, Services, Testimonials, Nav, AboutPortfolio, ContactSection, Pricing, ScrollAwareBackground, DecryptedText } from '@/components';
+import { Footer, Services, Testimonials, Nav, AboutPortfolio, ContactSection, Pricing, ScrollAwareBackground, FloatingWhatsApp } from '@/components';
 import FlyingPosters from "@/components/FlyingPosters";
 
 const items = [
-  {
-    image: '/assets/ashvathamanassociates.png',
-  },
-  {
-    image: '/assets/blessing.png',
-  },
+  {image: '/assets/ashvathamanassociates.png'},
+  { image: '/assets/blessing.png' },
   { image: '/assets/accounts website.png' },
   { image: '/assets/arultrust.png' },
   { image: '/assets/curves&fitz.png' },
@@ -28,12 +24,7 @@ export default function Home() {
       <Services />
       <section id="works" className="relative w-full overflow-hidden min-h-[500px] md:h-[700px] flex flex-col items-center" style={{ backgroundColor: '#0f0f0f' }}>
         <div className="absolute top-10 z-50 pointer-events-none">
-          <DecryptedText
-            text="Our Works"
-            animateOn="view"
-            revealDirection="center"
-            parentClassName="text-4xl md:text-5xl font-bold text-white"
-          />
+          <h2 className="text-4xl md:text-5xl font-bold text-white">Our Works</h2>
         </div>
         <FlyingPosters items={items} />
       </section>
@@ -41,6 +32,7 @@ export default function Home() {
       <Testimonials />
       <ContactSection />
       <Footer />
+      <FloatingWhatsApp />
     </main>
   );
 }
