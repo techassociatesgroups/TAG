@@ -12,6 +12,19 @@ const items = [
   { image: '/assets/pattushop.png' },
   { image: '/assets/sunilassociates.png' },
   { image: '/assets/tamilai.png' },
+  { image: '/assets/clothme_website.png' },
+  { image: '/assets/course-website.png' },
+  { image: '/assets/course2_website.png' },
+  {image: '/assets/ev_website.png' },
+  {image: '/assets/glamora_website.png' },
+  {image: '/assets/gramathul_ecommerce.png' },
+  {image: '/assets/realestate.png' },
+  {image: '/assets/skinny_website.png' },
+  {image: '/assets/Tag_website.png' },
+  {image: '/assets/Trendy_ecommerce_template.png' },
+  {image: '/assets/ux temp.png' }
+
+
 ];
 
 export default function Home() {
@@ -22,7 +35,7 @@ export default function Home() {
       <Hero />
       <AboutPortfolio />
       <Services />
-      <section id="works" className="relative w-full overflow-hidden min-h-[500px] md:h-[700px] flex flex-col items-center" style={{ backgroundColor: '#0f0f0f' }}>
+      <section id="works" className="relative w-full overflow-hidden min-h-[500px] md:h-[700px] flex flex-col items-center bg-black">
         <div className="absolute top-10 z-50 pointer-events-none">
           <h2 className="text-4xl md:text-5xl font-bold text-white">Our Works</h2>
         </div>

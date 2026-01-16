@@ -66,36 +66,36 @@ export function Works() {
           </div>
         </ScrollReveal>
 
-        <div className="space-y-6">
+        <div className="space-y-3 md:space-y-4">
           {projects.map((project, index) => (
             <ScrollReveal key={project.id} delay={index * 0.1}>
               <div>
-                <GlassCard className="group relative p-8 sm:p-12">
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-                    <div className="md:col-span-2 space-y-4">
+                <GlassCard className="group relative p-6 sm:p-8 md:p-10 lg:p-12 min-h-48 md:min-h-56 lg:min-h-64">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 items-center h-full">
+                    <div className="md:col-span-1 lg:col-span-2 space-y-3 md:space-y-4">
                       <span className="inline-block text-xs font-semibold text-white/60 uppercase tracking-widest px-3 py-1 rounded-full bg-white/5">
                         {project.category}
                       </span>
-                      <h3 className="text-3xl sm:text-4xl font-bold text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-blue-400 group-hover:bg-clip-text transition-all duration-300">
+                      <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-blue-400 group-hover:bg-clip-text transition-all duration-300 line-clamp-2">
                         {project.title}
                       </h3>
-                      <p className="text-white/70 text-lg leading-relaxed max-w-xl">
+                      <p className="text-white/70 text-base md:text-lg leading-relaxed max-w-2xl line-clamp-3">
                         {project.description}
                       </p>
                     </div>
                     <motion.div
                       whileHover={{ scale: 1.05, rotate: 5 }}
                       transition={{ type: 'spring', stiffness: 300, damping: 10 }}
-                      className="md:col-span-1 flex items-center justify-center"
+                      className="lg:col-span-1 flex items-center justify-center w-full"
                     >
                       <div
-                        className={`w-48 h-48 rounded-2xl bg-gradient-to-br ${project.color} opacity-20 blur-2xl group-hover:opacity-40 transition-opacity duration-300`}
+                        className={`w-56 h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-2xl bg-gradient-to-br ${project.color} opacity-20 blur-2xl group-hover:opacity-40 transition-opacity duration-300`}
                       />
                       <motion.button
                         whileHover={{ scale: 1.1, rotate: 45 }}
-                        className="absolute flex items-center justify-center w-16 h-16 rounded-full bg-white/10 hover:bg-white/20 transition-colors duration-300"
+                        className="absolute flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/10 hover:bg-white/20 transition-colors duration-300"
                       >
-                        <ExternalLink className="w-6 h-6 text-white" />
+                        <ExternalLink className="w-6 h-6 md:w-8 md:h-8 text-white" />
                       </motion.button>
                     </motion.div>
                   </div>

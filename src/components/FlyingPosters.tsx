@@ -62,7 +62,12 @@ in float vAlpha;
 flat in int vInstanceId;
 
 void main() {
-    int itemIndex = vInstanceId % uItemCount;
+    // Only display images for instances within the item count, no repetition
+    int itemIndex = vInstanceId;
+    if (itemIndex >= uItemCount) {
+        discard; // Don't render instances beyond item count
+    }
+    
     int cellsPerRow = uAtlasSize;
     int cellX = itemIndex % cellsPerRow;
     int cellY = itemIndex / cellsPerRow;
@@ -318,6 +323,68 @@ class IcosahedronGeometry extends Geometry {
       9,
       8,
       1
+    );
+  }
+}
+
+class DodecahedronGeometry extends Geometry {
+  constructor() {
+    super();
+    const t = (1 + Math.sqrt(5)) / 2;
+    const r = 1 / t;
+
+    this.addVertex(
+      -1, -1, -1,
+      1, -1, -1,
+      1, 1, -1,
+      -1, 1, -1,
+      -1, -1, 1,
+      1, -1, 1,
+      1, 1, 1,
+      -1, 1, 1,
+      0, -r, -t,
+      0, r, -t,
+      0, r, t,
+      0, -r, t,
+      -r, -t, 0,
+      r, -t, 0,
+      r, t, 0,
+      -r, t, 0,
+      -t, 0, -r,
+      t, 0, -r,
+      t, 0, r,
+      -t, 0, r
+    ).addFace(
+      0, 12, 8,
+      0, 8, 16,
+      0, 16, 4,
+      0, 4, 11,
+      0, 11, 12,
+      1, 13, 9,
+      1, 9, 17,
+      1, 17, 5,
+      1, 5, 13,
+      2, 14, 10,
+      2, 10, 18,
+      2, 18, 6,
+      2, 6, 14,
+      3, 15, 11,
+      3, 11, 19,
+      3, 19, 7,
+      3, 7, 15,
+      4, 19, 11,
+      5, 18, 13,
+      6, 10, 14,
+      7, 15, 19,
+      8, 9, 12,
+      13, 12, 9,
+      14, 15, 10,
+      16, 17, 9,
+      8, 12, 16,
+      10, 11, 4,
+      17, 18, 5,
+      6, 7, 18,
+      18, 19, 7
     );
   }
 }
@@ -698,7 +765,7 @@ class InfiniteGridMenu {
   private movementActive = false;
 
   private TARGET_FRAME_DURATION = 1000 / 60;
-  private SPHERE_RADIUS = 2;
+  private SPHERE_RADIUS = 1.4;
 
   public camera: Camera = {
     matrix: mat4.create(),
@@ -797,10 +864,16 @@ class InfiniteGridMenu {
       this.discBuffers.indices
     );
 
-    this.icoGeo = new IcosahedronGeometry();
-    this.icoGeo.subdivide(1).spherize(this.SPHERE_RADIUS);
+    this.icoGeo = new DodecahedronGeometry();
+    // Dodecahedron has exactly 20 vertices, perfect for 20 images
+    const itemCount = Math.max(1, this.items.length);
+    
+    // Only spherize without subdivision to get exactly 20 positions
+    this.icoGeo.spherize(this.SPHERE_RADIUS);
     this.instancePositions = this.icoGeo.vertices.map(v => v.position);
-    this.DISC_INSTANCE_COUNT = this.icoGeo.vertices.length;
+    
+    // Use exactly the number of items (20 vertices = 20 images)
+    this.DISC_INSTANCE_COUNT = Math.min(this.icoGeo.vertices.length, itemCount);
     this.initDiscInstances(this.DISC_INSTANCE_COUNT);
     this.initTexture();
     this.control = new ArcballControl(this.canvas, deltaTime => this.onControlUpdate(deltaTime));
@@ -896,10 +969,12 @@ class InfiniteGridMenu {
     }
 
     const positions = this.instancePositions.map(p => vec3.transformQuat(vec3.create(), p, this.control.orientation));
-    const scale = 0.25;
+    const scale = 0.18;
     const SCALE_INTENSITY = 0.6;
 
-    positions.forEach((p, ndx) => {
+    // Only update matrices for the actual number of instances (no duplicates)
+    for (let ndx = 0; ndx < this.DISC_INSTANCE_COUNT; ndx++) {
+      const p = positions[ndx];
       const s = (Math.abs(p[2]) / this.SPHERE_RADIUS) * SCALE_INTENSITY + (1 - SCALE_INTENSITY);
       const finalScale = s * scale;
       const matrix = mat4.create();
@@ -910,7 +985,7 @@ class InfiniteGridMenu {
       mat4.multiply(matrix, matrix, mat4.fromTranslation(mat4.create(), [0, 0, -this.SPHERE_RADIUS]));
 
       mat4.copy(this.discInstances.matrices[ndx], matrix);
-    });
+    }
 
     this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this.discInstances.buffer);
     this.gl.bufferSubData(this.gl.ARRAY_BUFFER, 0, this.discInstances.matricesArray);
