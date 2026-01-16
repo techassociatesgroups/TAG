@@ -11,7 +11,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="icon" type="image/png" href="/assets/favi.png" />
       </head>
       <body className="bg-[#0a0a0a] text-[#ededed]">
         <SmoothScroll>
