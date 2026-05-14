@@ -1,65 +1,13 @@
 'use client';
-
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import { Nav, FloatingWhatsApp, Footer, ScrollAwareBackground } from '@/components';
 import GlassCard from '@/components/GlassCard';
+import { works as allProjects, flyingPosters } from '@/lib/data';
+import FlyingPosters from '@/components/FlyingPosters';
+import React from 'react';
 
-const allProjects = [
-   { 
-    id: 1, 
-    title: "Ashwathaman associates ", 
-  category: "Web Design & Development", 
-    image: "/asvathamanassociateswebsite.png",
-    websiteUrl: "https://ashvathamanassociates.in/",
-    description: "Modern responsive website design"
-  },
-  { 
-    id: 2, 
-    title: "Sunil Associates", 
-   category: "Branding & Identity with SEO", 
-    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=800&fit=crop",
-    websiteUrl: "https://sunilassociates.in/",
-    description: "Complete brand identity system"
-  },
-  { 
-    id: 3, 
-    title: "Drivetech solutions", 
-   category: "Branding & Identity with SEO", 
-    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=800&fit=crop",
-    websiteUrl: "https://drivetechsystems.in/",
-    description: "Website designing and development with maintenance"
-  },
-  { 
-    id: 4, 
-    title: "Capicons", 
-   category: "Website Developement", 
-    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=800&fit=crop",
-    websiteUrl: "https://www.capicons.in/",
-    description: "Website development"
-  },
-  { 
-    id: 5, 
-    title: "Blessings PreSchool", 
-  category: "Website Developement", 
-    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=800&fit=crop",
-    websiteUrl: "https://blessingspreschool.in/",
-    description: "Website development"
-    
-  },
- 
-  // {
-  //   id: 8,
-  //   title: "Content Management System",
-  //   category: "Web Development",
-  //   description: "Custom CMS platform with intuitive admin panel, content scheduling, and multi-user support.",
-  //   image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop",
-  //   websiteUrl: "https://example.com/project8",
-   
-  // },
-];
-
-const categories = ['All', 'Web Development', 'Branding', 'UI/UX Design', 'Digital Marketing', 'App Development', 'Web Design'];
+const categories = ['All', 'Web Development', 'Branding', 'UI/UX Design', 'Digital Marketing', 'App Development', 'Web Design', 'Nonprofit', 'E‑commerce', 'Product', 'Retail', 'Consulting', 'Design'];
 
 export default function ProjectsPage() {
   const [selectedCategory, setSelectedCategory] = React.useState('All');
@@ -74,6 +22,10 @@ export default function ProjectsPage() {
       <ScrollAwareBackground />
       <main className="overflow-x-hidden pt-24">
         {/* Hero */}
+        <section className="relative w-full h-[50vh] py-20 px-4 sm:px-6 lg:px-8">
+          <FlyingPosters items={flyingPosters} />
+        </section>
+        
         <section className="relative w-full py-20 px-4 sm:px-6 lg:px-8">
           <div className="container mx-auto max-w-7xl">
             <motion.div
@@ -145,7 +97,7 @@ export default function ProjectsPage() {
                       </p>
                       
                       <motion.a
-                        href={project.websiteUrl}
+                        href={'#'}
                         target="_blank"
                         rel="noopener noreferrer"
                         whileHover={{ x: 5 }}
@@ -168,5 +120,3 @@ export default function ProjectsPage() {
     </>
   );
 }
-
-import React from 'react';

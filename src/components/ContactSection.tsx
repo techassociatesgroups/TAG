@@ -131,7 +131,9 @@ export function ContactSection() {
             className="space-y-4"
           >
             <input
+              id="name"
               name="name"
+              aria-label="Your Name"
               value={form.name}
               onChange={handleChange}
               placeholder="Your Name"
@@ -141,8 +143,10 @@ export function ContactSection() {
             />
 
             <input
+              id="email"
               name="email"
               type="email"
+              aria-label="Email Address"
               value={form.email}
               onChange={handleChange}
               placeholder="Email Address"
@@ -152,7 +156,9 @@ export function ContactSection() {
             />
 
             <input
+              id="phone"
               name="phone"
+              aria-label="Phone Number"
               value={form.phone}
               onChange={handleChange}
               placeholder="Phone Number"
@@ -162,7 +168,9 @@ export function ContactSection() {
             />
 
             <select
+              id="service"
               name="service"
+              aria-label="Service Required"
               value={form.service}
               onChange={handleChange}
               disabled={isSubmitting}

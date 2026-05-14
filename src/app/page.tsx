@@ -1,18 +1,11 @@
 import Hero from '@/components/Hero';
 import { Footer, Services, Testimonials, Nav, AboutPortfolio, ContactSection, Pricing, ScrollAwareBackground, FloatingWhatsApp } from '@/components';
-import FlyingPosters from "@/components/FlyingPosters";
-
-const items = [
-  {image: '/assets/ashvathamanassociates.png'},
-  { image: '/assets/blessing.png' },
-  { image: '/assets/accounts website.png' },
-  { image: '/assets/arultrust.png' },
-  { image: '/assets/curves&fitz.png' },
-  { image: '/assets/drivetech.png' },
-  { image: '/assets/pattushop.png' },
-  { image: '/assets/sunilassociates.png' },
-  { image: '/assets/tamilai.png' },
-];
+import dynamic from 'next/dynamic';
+const FlyingPosters = dynamic(() => import('@/components/FlyingPosters'), { 
+  ssr: false,
+  loading: () => <div className="absolute inset-0 flex items-center justify-center text-white/50 text-sm">Loading 3D Experience...</div>
+});
+import { flyingPosters } from '@/lib/data';
 
 export default function Home() {
   return (
@@ -26,7 +19,7 @@ export default function Home() {
         <div className="absolute top-10 z-50 pointer-events-none">
           <h2 className="text-4xl md:text-5xl font-bold text-white">Our Works</h2>
         </div>
-        <FlyingPosters items={items} />
+        <FlyingPosters items={flyingPosters} />
       </section>
       <Pricing />
       <Testimonials />
