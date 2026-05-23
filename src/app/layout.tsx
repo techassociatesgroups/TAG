@@ -91,6 +91,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" type="image/png" href="/assets/favi.png" />
+        <title>Tech Associates Groups | Custom Branding & Digital Solutions</title>
+        <meta name="description" content="Elevate your brand with custom identity, website development, 3D modeling, UI/UX design, and digital marketing." />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
