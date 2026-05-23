@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Lenis from 'lenis';
 
 export function SmoothScroll({ children }: { children: React.ReactNode }) {
-  const [lenis, setLenis] = useState<Lenis | null>(null);
+  const [lenis, setLenis] = useState<InstanceType<typeof Lenis> | null>(null);
 
   useEffect(() => {
     const lenis = new Lenis({

@@ -26,10 +26,10 @@ export function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-6">Services</h4>
             <ul className="space-y-3 text-gray-300 text-sm">
-              <li><Link href="#services" className="hover:text-purple-400 transition-colors">Website Development</Link></li>
-              <li><Link href="#services" className="hover:text-purple-400 transition-colors">UI/UX Design</Link></li>
-              <li><Link href="#services" className="hover:text-purple-400 transition-colors">3D Modeling</Link></li>
-              <li><Link href="#services" className="hover:text-purple-400 transition-colors">Digital Marketing</Link></li>
+              <li><Link href="/#services" className="hover:text-purple-400 transition-colors">Website Development</Link></li>
+              <li><Link href="/#services" className="hover:text-purple-400 transition-colors">UI/UX Design</Link></li>
+              <li><Link href="/#services" className="hover:text-purple-400 transition-colors">3D Modeling</Link></li>
+              <li><Link href="/#services" className="hover:text-purple-400 transition-colors">Digital Marketing</Link></li>
             </ul>
           </div>
 
@@ -37,10 +37,10 @@ export function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-6">Company</h4>
             <ul className="space-y-3 text-gray-300 text-sm">
-              <li><Link href="#about" className="hover:text-purple-400 transition-colors">About Us</Link></li>
-              <li><Link href="#works" className="hover:text-purple-400 transition-colors">Portfolio</Link></li>
-              <li><Link href="#pricing" className="hover:text-purple-400 transition-colors">Pricing</Link></li>
-              <li><Link href="#contact" className="hover:text-purple-400 transition-colors">Contact</Link></li>
+              <li><Link href="/#about" className="hover:text-purple-400 transition-colors">About Us</Link></li>
+              <li><Link href="/projects" className="hover:text-purple-400 transition-colors">Portfolio / Works</Link></li>
+              <li><Link href="/#pricing" className="hover:text-purple-400 transition-colors">Pricing</Link></li>
+              <li><Link href="/#contact" className="hover:text-purple-400 transition-colors">Contact</Link></li>
             </ul>
           </div>
 

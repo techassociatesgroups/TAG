@@ -41,26 +41,40 @@ export function ScrollAwareBackground() {
   );
 
   return (
-    <div ref={ref} className="fixed inset-0 -z-10 pointer-events-none">
+    <div ref={ref} className="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
+      <style>{`
+        @keyframes float-blob-1 {
+          0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+          33% { transform: translate3d(40px, 30px, 0) scale(1.05); }
+          66% { transform: translate3d(-20px, -20px, 0) scale(0.95); }
+        }
+        @keyframes float-blob-2 {
+          0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+          33% { transform: translate3d(-50px, -20px, 0) scale(1.06); }
+          66% { transform: translate3d(30px, 40px, 0) scale(0.94); }
+        }
+        @keyframes float-blob-3 {
+          0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+          33% { transform: translate3d(60px, 40px, 0) scale(1.08); }
+          66% { transform: translate3d(-30px, -40px, 0) scale(0.92); }
+        }
+        .blob-1 { animation: float-blob-1 22s ease-in-out infinite; will-change: transform; }
+        .blob-2 { animation: float-blob-2 18s ease-in-out infinite; will-change: transform; }
+        .blob-3 { animation: float-blob-3 25s ease-in-out infinite; will-change: transform; }
+      `}</style>
       <motion.div
-        style={{ background: color, x: 0 }}
-        className="absolute left-[-10%] top-[-10%] w-[60vw] h-[60vw] rounded-full blur-[140px] opacity-20"
-        animate={{ x: [0, 40, -20, 0], y: [0, 30, -20, 0], scale: [1, 1.05, 1, 1] }}
-        transition={{ repeat: Infinity, duration: 22, ease: 'easeInOut' }}
+        style={{ background: color }}
+        className="absolute left-[-10%] top-[-10%] w-[60vw] h-[60vw] rounded-full blur-[100px] opacity-20 blob-1"
       />
 
       <motion.div
         style={{ background: color2 }}
-        className="absolute right-[-15%] top-[20%] w-[50vw] h-[50vw] rounded-full blur-[160px] opacity-15"
-        animate={{ x: [0, -50, 30, 0], y: [0, -20, 40, 0], scale: [1, 1.06, 1, 1] }}
-        transition={{ repeat: Infinity, duration: 18, ease: 'easeInOut' }}
+        className="absolute right-[-15%] top-[20%] w-[50vw] h-[50vw] rounded-full blur-[120px] opacity-15 blob-2"
       />
 
       <motion.div
         style={{ background: color3 }}
-        className="absolute left-[10%] bottom-[-10%] w-[70vw] h-[70vw] rounded-full blur-[180px] opacity-10"
-        animate={{ x: [0, 60, -30, 0], y: [0, 40, -40, 0], scale: [1, 1.08, 1, 1] }}
-        transition={{ repeat: Infinity, duration: 25, ease: 'easeInOut' }}
+        className="absolute left-[10%] bottom-[-10%] w-[70vw] h-[70vw] rounded-full blur-[140px] opacity-10 blob-3"
       />
     </div>
   );

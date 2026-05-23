@@ -117,7 +117,7 @@ const pricingTiers = [
 
 export function Pricing() {
   return (
-    <section id="pricing" className="relative w-full py-20 px-4 sm:px-6 lg:px-8">
+    <section id="pricing" className="relative w-full py-20 px-4 sm:px-6 lg:px-8 bg-black">
       <div className="container mx-auto max-w-7xl">
         {/* Header */}
         <motion.div
@@ -197,7 +197,7 @@ export function Pricing() {
                 {/* Features */}
                 <div className="space-y-4">
                   <div className="text-sm font-semibold text-white/80 mb-4">
-                    What's Included:
+                    What&apos;s Included:
                   </div>
                   {tier.features.map((feature, featureIndex) => (
                     <motion.div

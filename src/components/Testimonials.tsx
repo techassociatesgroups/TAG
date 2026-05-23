@@ -45,7 +45,7 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="relative w-full py-20 px-4 sm:px-6 lg:px-8">
+    <section id="testimonials" className="relative w-full py-20 px-4 sm:px-6 lg:px-8 bg-black">
       <div className="container mx-auto max-w-7xl">
         {/* Header */}
         <motion.div
@@ -59,7 +59,7 @@ export function Testimonials() {
             What Our <span className="text-transparent bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text">Clients Say</span>
           </h2>
           <p className="text-white/60 text-lg max-w-2xl mx-auto">
-            Real feedback from businesses we've helped transform
+            Real feedback from businesses we&apos;ve helped transform
           </p>
         </motion.div>
 
@@ -83,7 +83,7 @@ export function Testimonials() {
 
                 {/* Testimonial Text */}
                 <p className="text-white/80 text-sm leading-relaxed mb-6 flex-grow">
-                  "{testimonial.testimonial}"
+                  &ldquo;{testimonial.testimonial}&rdquo;
                 </p>
 
                 {/* Author */}

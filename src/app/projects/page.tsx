@@ -1,10 +1,17 @@
-'use client';
+"use client";
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
-import { Nav, FloatingWhatsApp, Footer, ScrollAwareBackground } from '@/components';
+import { Nav } from '@/components/Nav';
+import { ScrollAwareBackground } from '@/components/ScrollAwareBackground';
+import { Footer } from '@/components/Footer';
+import { FloatingWhatsApp } from '@/components/FloatingWhatsApp';
 import GlassCard from '@/components/GlassCard';
 import { works as allProjects, flyingPosters } from '@/lib/data';
-import FlyingPosters from '@/components/FlyingPosters';
+import dynamic from 'next/dynamic';
+const FlyingPosters = dynamic(() => import('@/components/FlyingPosters'), { 
+  ssr: false,
+  loading: () => <div className="absolute inset-0 flex items-center justify-center text-white/50 text-sm">Loading 3D Experience...</div>
+});
 import React from 'react';
 
 const categories = ['All', 'Web Development', 'Branding', 'UI/UX Design', 'Digital Marketing', 'App Development', 'Web Design', 'Nonprofit', 'E‑commerce', 'Product', 'Retail', 'Consulting', 'Design'];

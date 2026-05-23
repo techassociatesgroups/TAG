@@ -24,7 +24,7 @@ const services = [
 
 export function Services() {
   return (
-    <section id="services" className="relative w-full py-16 px-4 sm:px-6 lg:px-8">
+    <section id="services" className="relative w-full py-16 px-4 sm:px-6 lg:px-8 bg-black">
       <div className="container mx-auto max-w-7xl">
         {/* Header */}
         <motion.div

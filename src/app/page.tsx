@@ -1,11 +1,25 @@
 import Hero from '@/components/Hero';
-import { Footer, Services, Testimonials, Nav, AboutPortfolio, ContactSection, Pricing, ScrollAwareBackground, FloatingWhatsApp } from '@/components';
+import { Nav } from '@/components/Nav';
+import { ScrollAwareBackground } from '@/components/ScrollAwareBackground';
+import { AboutPortfolio } from '@/components/AboutPortfolio';
+import { WorksSection } from '@/components/WorksSection';
+import { Footer } from '@/components/Footer';
+import { FloatingWhatsApp } from '@/components/FloatingWhatsApp';
 import dynamic from 'next/dynamic';
-const FlyingPosters = dynamic(() => import('@/components/FlyingPosters'), { 
-  ssr: false,
-  loading: () => <div className="absolute inset-0 flex items-center justify-center text-white/50 text-sm">Loading 3D Experience...</div>
+
+// Dynamic imports for code splitting below-the-fold heavy components
+const Services = dynamic(() => import('@/components/Services').then(mod => mod.Services), { 
+  ssr: true 
 });
-import { flyingPosters } from '@/lib/data';
+const Pricing = dynamic(() => import('@/components/Pricing').then(mod => mod.Pricing), { 
+  ssr: true 
+});
+const Testimonials = dynamic(() => import('@/components/Testimonials').then(mod => mod.Testimonials), { 
+  ssr: true 
+});
+const ContactSection = dynamic(() => import('@/components/ContactSection').then(mod => mod.ContactSection), { 
+  ssr: true 
+});
 
 export default function Home() {
   return (
@@ -15,12 +29,7 @@ export default function Home() {
       <Hero />
       <AboutPortfolio />
       <Services />
-      <section id="works" className="relative w-full overflow-hidden min-h-[500px] md:h-[700px] flex flex-col items-center" style={{ backgroundColor: '#0f0f0f' }}>
-        <div className="absolute top-10 z-50 pointer-events-none">
-          <h2 className="text-4xl md:text-5xl font-bold text-white">Our Works</h2>
-        </div>
-        <FlyingPosters items={flyingPosters} />
-      </section>
+      <WorksSection />
       <Pricing />
       <Testimonials />
       <ContactSection />

@@ -54,7 +54,7 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="w-full py-20 px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="w-full py-20 px-4 sm:px-6 lg:px-8 bg-black">
       <div className="container mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -130,7 +130,8 @@ export function ContactSection() {
             onSubmit={handleSubmit}
             className="space-y-4"
           >
-            <input
+             <label htmlFor="name" className="sr-only">Your Name</label>
+             <input
               id="name"
               name="name"
               aria-label="Your Name"
@@ -142,6 +143,7 @@ export function ContactSection() {
               className="w-full p-4 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-purple-400"
             />
 
+            <label htmlFor="email" className="sr-only">Email Address</label>
             <input
               id="email"
               name="email"
@@ -155,6 +157,7 @@ export function ContactSection() {
               className="w-full p-4 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-purple-400"
             />
 
+            <label htmlFor="phone" className="sr-only">Phone Number</label>
             <input
               id="phone"
               name="phone"
@@ -167,6 +170,7 @@ export function ContactSection() {
               className="w-full p-4 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-purple-400"
             />
 
+            <label htmlFor="service" className="sr-only">Service Required</label>
             <select
               id="service"
               name="service"
